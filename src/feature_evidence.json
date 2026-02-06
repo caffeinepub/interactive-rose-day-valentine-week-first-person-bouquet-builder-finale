@@ -1,0 +1,144 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-single-page-interactive-rose-day-feb-7-experience-that-addresses-the-recipient-in-first-person-using-you-language-do-not-refer-to-the-recipient-as-she",
+      "featureTitle": "Create a single-page interactive Rose Day (Feb 7) experience that addresses the recipient in first-person using “you” language (do not refer to the recipient as “she”).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/SiteFrame.tsx",
+        "frontend/src/features/roseDay/RoseDayExperience.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-an-interactive-flow-that-culminates-in-a-finale-scene-showing-a-digital-bouquet-of-roses-in-a-vase",
+      "featureTitle": "Implement an interactive flow that culminates in a ‘finale’ scene showing a digital bouquet of roses in a vase.",
+      "files": [
+        "frontend/src/features/roseDay/RoseDayExperience.tsx",
+        "frontend/src/features/roseDay/scenes/FinalePanel.tsx",
+        "frontend/src/features/roseDay/scenes/LandingPanel.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-3d-first-person-perspective-bouquet-assembly-scene-using-react-three-fiber-three-js-where-the-user-can-add-roses-one-by-one-and-see-them-animate-into-the-vase",
+      "featureTitle": "Build a 3D first-person perspective bouquet assembly scene using React Three Fiber (Three.js) where the user can add roses one-by-one and see them animate into the vase.",
+      "files": [
+        "frontend/src/features/roseDay/RoseDayExperience.tsx",
+        "frontend/src/features/roseDay/three/BouquetScene.tsx",
+        "frontend/src/features/roseDay/three/Rose.tsx",
+        "frontend/src/features/roseDay/three/Vase.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-bouquet-construction-logic-aligns-roses-neatly-newly-added-roses-should-be-positioned-rotated-to-form-a-visually-coherent-bouquet-arrangement-inside-the-vase-no-random-scattering-outside-the-vase",
+      "featureTitle": "Ensure bouquet construction logic aligns roses neatly: newly added roses should be positioned/rotated to form a visually coherent bouquet arrangement inside the vase (no random scattering outside the vase).",
+      "files": [
+        "frontend/src/features/roseDay/three/BouquetScene.tsx",
+        "frontend/src/features/roseDay/three/bouquetLayout.ts",
+        "frontend/src/features/roseDay/three/constants.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-simple-narrative-interactivity-layer-before-and-during-bouquet-building-e-g-short-rose-day-prompts-a-start-moment-and-progression-text-to-make-the-website-feel-interactive-rather-than-a-single-static-3d-view",
+      "featureTitle": "Add a simple narrative/interactivity layer before and during bouquet building (e.g., short Rose Day prompts, a ‘start’ moment, and progression text) to make the website feel interactive rather than a single static 3D view.",
+      "files": [
+        "frontend/src/features/roseDay/RoseDayExperience.tsx",
+        "frontend/src/features/roseDay/scenes/BuildOverlay.tsx",
+        "frontend/src/features/roseDay/scenes/PromptPanel.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-coherent-visual-theme-for-the-entire-site-colors-typography-spacing-ui-styling-appropriate-for-rose-day-valentine-week-and-apply-it-consistently-across-screens-and-ui-components-avoid-default-template-look",
+      "featureTitle": "Add a coherent visual theme for the entire site (colors, typography, spacing, UI styling) appropriate for Rose Day/Valentine Week, and apply it consistently across screens and UI components (avoid default template look).",
+      "files": [
+        "frontend/src/components/layout/SiteFrame.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-required-custom-static-images-and-use-them-in-the-ui-served-from-frontend-public-assets-generated-not-through-the-backend",
+      "featureTitle": "Create required custom static images and use them in the UI (served from frontend/public/assets/generated, not through the backend).",
+      "files": [
+        "frontend/src/components/layout/SiteFrame.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

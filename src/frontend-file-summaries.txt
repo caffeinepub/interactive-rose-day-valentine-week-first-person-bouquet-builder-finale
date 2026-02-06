@@ -1,0 +1,17 @@
+{
+  "frontend/src/index.css": "Global styles with warm Rose Day OKLCH color palette (rose/red/cream tones), custom font families (Playfair Display serif), and animation keyframes for fade-in and floating effects.",
+  "frontend/tailwind.config.js": "Extended Tailwind configuration with Rose Day theme tokens, custom font families, border radii variations, soft shadows, glow effects, and custom animations for the interactive experience.",
+  "frontend/src/App.tsx": "Root application component that renders the RoseDayExperience as the main entry point.",
+  "frontend/src/features/roseDay/RoseDayExperience.tsx": "Main state machine orchestrating the four-stage interactive flow (landing → prompt → building → finale) with rose count tracking and 3D scene rendering during building/finale states.",
+  "frontend/src/components/layout/SiteFrame.tsx": "Responsive layout wrapper providing header with rose mark logo, background image integration, gradient overlay, and footer with attribution—used consistently across all experience states.",
+  "frontend/src/features/roseDay/scenes/LandingPanel.tsx": "Entry panel with welcoming Rose Day message addressing the recipient as \"you\" and a call-to-action button to begin the interactive journey.",
+  "frontend/src/features/roseDay/scenes/PromptPanel.tsx": "Intermediate narrative panel explaining the bouquet-building experience with first-person language and transition to the 3D building phase.",
+  "frontend/src/features/roseDay/scenes/BuildOverlay.tsx": "Bottom-anchored UI overlay during building phase showing rose count, progress bar, completion status, and \"Add a Rose\" button with real-time feedback.",
+  "frontend/src/features/roseDay/scenes/FinalePanel.tsx": "Completion panel displaying congratulatory message with final rose count, romantic copy addressing \"you,\" and restart option—overlays the completed 3D bouquet.",
+  "frontend/src/features/roseDay/three/BouquetScene.tsx": "React Three Fiber canvas setup with first-person camera perspective, orbit controls, lighting (ambient, directional, point lights), vase, animated roses, and shadow-receiving ground plane.",
+  "frontend/src/features/roseDay/three/Vase.tsx": "3D vase model composed of cylindrical geometries (body, rim, base) with ceramic-like material (beige/cream colors) positioned to receive the bouquet.",
+  "frontend/src/features/roseDay/three/Rose.tsx": "Animated 3D rose component with procedural geometry (spherical petals arranged in layers, cylindrical stem, box leaves), custom entrance animation using useFrame hook with easing, and subtle floating motion after placement.",
+  "frontend/src/features/roseDay/three/bouquetLayout.ts": "Deterministic bouquet slot calculation using spiral/layered ring arrangement—computes position, rotation, and scale for each rose index to create aligned, natural-looking bouquet within vase bounds.",
+  "frontend/src/features/roseDay/three/constants.ts": "Centralized layout constants (vase opening radius, layer height spacing, max tilt angles, spawn offsets) ensuring consistent bouquet geometry and animation behavior.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for React Query hooks—intentionally minimal as this experience is fully client-side with no backend data fetching required."
+}

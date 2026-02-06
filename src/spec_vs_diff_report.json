@@ -1,0 +1,71 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-06T19:55:11.785Z",
+  "summary": "Implemented a multi-state single-page Rose Day experience with themed UI, generated-image-based background/logo, and a React Three Fiber bouquet/vase scene where roses can be added via a button and animate into place. Some requirements around deterministic/neat bouquet layout for 20+ roses and inclusion of generated image assets cannot be fully verified from the provided diff summary. Diff also includes unrequested Internet Identity/auth plumbing and an external attribution link.",
+  "missing_requirements": [
+    {
+      "id": "REQ-4",
+      "requirement": "Ensure bouquet construction logic aligns roses neatly (within vase opening; coherent silhouette; adding many roses (20+) remains aligned without severe overlap).",
+      "reason": "The bouquet slot calculation uses randomness for rotation/scale and the radial growth can exceed the stated vase opening radius after several layers, which risks misalignment/clipping and makes 20+ roses behavior non-deterministic and potentially outside the vase bounds.",
+      "evidence": [
+        "frontend/src/features/roseDay/three/bouquetLayout.ts",
+        "frontend/src/features/roseDay/three/constants.ts",
+        "frontend/src/features/roseDay/three/Vase.tsx"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "Generated images exist in frontend/public/assets/generated with the exact required filenames.",
+      "reason": "UI references the required filenames, but the actual image files under frontend/public/assets/generated are not shown in the diff summary (some added files were omitted due to limits), so existence cannot be confirmed from provided evidence.",
+      "evidence": [
+        "frontend/src/components/layout/SiteFrame.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity provider/authentication plumbing included in app bootstrap.",
+      "reason": "BuildRequest explicitly lists Internet Identity authentication as a non-goal; the diff wires up InternetIdentityProvider and includes identity-based actor creation logic even though the experience is client-side.",
+      "evidence": [
+        "frontend/src/main.tsx",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/hooks/useInternetIdentity.ts"
+      ]
+    },
+    {
+      "description": "External attribution link to caffeine.ai in the site footer.",
+      "reason": "Not requested in the BuildRequest and introduces an external link/integration-like element beyond the specified UX.",
+      "evidence": [
+        "frontend/src/components/layout/SiteFrame.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/layout/SiteFrame.tsx",
+    "frontend/src/features/roseDay/RoseDayExperience.tsx",
+    "frontend/src/features/roseDay/scenes/BuildOverlay.tsx",
+    "frontend/src/features/roseDay/scenes/FinalePanel.tsx",
+    "frontend/src/features/roseDay/scenes/LandingPanel.tsx",
+    "frontend/src/features/roseDay/scenes/PromptPanel.tsx",
+    "frontend/src/features/roseDay/three/BouquetScene.tsx",
+    "frontend/src/features/roseDay/three/Rose.tsx",
+    "frontend/src/features/roseDay/three/Vase.tsx",
+    "frontend/src/features/roseDay/three/bouquetLayout.ts",
+    "frontend/src/features/roseDay/three/constants.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

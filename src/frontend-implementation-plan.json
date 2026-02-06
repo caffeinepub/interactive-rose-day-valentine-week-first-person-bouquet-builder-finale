@@ -1,0 +1,204 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Interactive Rose Day 3D first-person bouquet builder (single-page)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Deliver a single-page Rose Day interactive experience with all copy addressed to “you” and responsive across mobile/desktop.",
+      "acceptanceCriteria": [
+        "All user-facing copy is in English and addresses the recipient as “you”.",
+        "No user-facing text refers to the recipient as “she/her”.",
+        "The experience works on both desktop and mobile browsers."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the single-page app shell that renders the Rose Day experience, ensuring all on-screen copy uses “you” phrasing and never “she/her”. Wire the main experience component here. Use shadcn-ui components (e.g., Button/Card) for consistent UI primitives—verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/roseDay/RoseDayExperience.tsx",
+          "operation": "create",
+          "description": "Implement the top-level single-page state machine (landing -> prompts/build -> finale) and ensure all narrative/UI strings address the recipient as “you”. Use shadcn-ui components for layout/typography containers where appropriate—verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/SiteFrame.tsx",
+          "operation": "create",
+          "description": "Create a responsive layout wrapper (header/title area, content container, and overlay positioning region for 3D UI) used across all states to keep the experience consistent on desktop and mobile. Use shadcn-ui components (Card/Separator) as building blocks—verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement an interactive progression that ends in a clear finale scene showing a completed digital bouquet of roses in a vase.",
+      "acceptanceCriteria": [
+        "There is a clear final state/scene that presents a bouquet of roses placed in a vase.",
+        "The user can reach the finale by progressing through the interactive flow (not a static page only)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/roseDay/RoseDayExperience.tsx",
+          "operation": "modify",
+          "description": "Add explicit progression logic and a completion trigger (e.g., after N roses added) that transitions into a finale state with distinct messaging and UI. Use shadcn-ui components (e.g., Progress/Badge/Button) to communicate progress—verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/roseDay/scenes/FinalePanel.tsx",
+          "operation": "create",
+          "description": "Create a dedicated finale overlay panel that confirms completion and frames the final bouquet-in-vase view (still showing the 3D scene behind/alongside). Use shadcn-ui Card/Button for the finale UI—verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/roseDay/scenes/LandingPanel.tsx",
+          "operation": "create",
+          "description": "Create an entry/landing state panel with a clear 'start' action that begins the interactive flow (not a static view). Ensure all copy uses “you”. Use shadcn-ui Button/Card—verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build a 3D game-like first-person bouquet assembly scene using React Three Fiber where roses are added one-by-one and animate into the vase.",
+      "acceptanceCriteria": [
+        "The bouquet scene is rendered in 3D.",
+        "Camera behavior communicates first-person perspective (e.g., user looks from near eye-level toward the vase with look controls).",
+        "The user has an obvious interaction to add a flower (e.g., click/tap button or click the vase).",
+        "Each added rose animates from a spawn position into the vase (visible motion, not instantaneous placement)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/package.json",
+          "operation": "modify",
+          "description": "Add required frontend dependencies for the 3D scene: React Three Fiber and common helpers (e.g., @react-three/fiber, three, @react-three/drei) so the bouquet scene can render and use first-person-like controls."
+        },
+        {
+          "path": "frontend/src/features/roseDay/three/BouquetScene.tsx",
+          "operation": "create",
+          "description": "Create the 3D scene using React Three Fiber: vase model, rose instances, lighting, and camera setup that reads as first-person (eye-level angle looking toward the vase). Include look controls appropriate for desktop/mobile (e.g., pointer/touch drag) and expose a clear add-rose interaction hook to the UI. Use shadcn-ui Button for an obvious add action overlay—verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/roseDay/three/Vase.tsx",
+          "operation": "create",
+          "description": "Implement a simple 3D vase (procedural geometry/materials) that visually contains the bouquet and provides a clear target area for rose placement."
+        },
+        {
+          "path": "frontend/src/features/roseDay/three/Rose.tsx",
+          "operation": "create",
+          "description": "Implement a stylized 3D rose (procedural geometry or simple composed meshes/materials) suitable for instancing and animation into the vase."
+        },
+        {
+          "path": "frontend/src/features/roseDay/three/useRoseEntranceAnimation.ts",
+          "operation": "create",
+          "description": "Create a small hook/utility to animate each newly added rose from a spawn position in front of the camera into its computed final slot in the vase (visible motion with easing)."
+        },
+        {
+          "path": "frontend/src/features/roseDay/RoseDayExperience.tsx",
+          "operation": "modify",
+          "description": "Wire the 3D BouquetScene into the interactive flow and connect the add-rose action (button/tap) so each interaction adds exactly one rose and triggers its entrance animation. Use shadcn-ui components for the overlay controls—verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Ensure bouquet construction logic aligns roses neatly into a coherent arrangement within the vase as the count grows (including 20+).",
+      "acceptanceCriteria": [
+        "Roses end their animation within the vase opening area (not clipping far outside).",
+        "Roses are arranged with consistent spacing and a believable bouquet silhouette (e.g., ring/spiral layering) as more are added.",
+        "Adding many roses (e.g., 20+) still results in an aligned arrangement without severe overlap artifacts."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/roseDay/three/bouquetLayout.ts",
+          "operation": "create",
+          "description": "Implement deterministic bouquet slot calculation (e.g., spiral/ring layers with controlled radius/height/rotation) that yields final positions/rotations inside the vase opening region, scaling cleanly to 20+ roses without scattering."
+        },
+        {
+          "path": "frontend/src/features/roseDay/three/BouquetScene.tsx",
+          "operation": "modify",
+          "description": "Use bouquetLayout slot outputs to place/rotate roses and clamp final positions to the vase opening bounds; ensure entrance animations land precisely on these aligned slots."
+        },
+        {
+          "path": "frontend/src/features/roseDay/three/constants.ts",
+          "operation": "create",
+          "description": "Centralize tunable layout constants (vase opening radius, layer spacing, max tilt, spawn offset) to keep bouquet alignment consistent and avoid roses clipping far outside the vase."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add narrative prompts and progression states before and during bouquet building to make the experience interactive (not just a static 3D view).",
+      "acceptanceCriteria": [
+        "There is an entry state (landing) and at least one intermediate interaction state before the finale bouquet completion moment.",
+        "Progression is clearly communicated (e.g., step indicator, ‘keep adding roses’, or a completion trigger).",
+        "All narrative text uses “you” phrasing."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/roseDay/scenes/PromptPanel.tsx",
+          "operation": "create",
+          "description": "Create an intermediate narrative/prompt panel shown before and/or during building (short Rose Day lines, guidance like “add your next rose”), explicitly using “you” phrasing. Use shadcn-ui components (Card/Badge/Button) to present prompts and actions—verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/roseDay/scenes/BuildOverlay.tsx",
+          "operation": "create",
+          "description": "Create the in-build overlay UI (rose counter, progress indicator, add-rose button, and a subtle ‘keep going’ message) that sits on top of the 3D scene. Use shadcn-ui Progress/Button—verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/roseDay/RoseDayExperience.tsx",
+          "operation": "modify",
+          "description": "Wire LandingPanel -> PromptPanel -> build state (BouquetScene + BuildOverlay) -> FinalePanel, and ensure progression messaging is always visible and uses “you” language."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Apply a cohesive Rose Day/Valentine Week visual theme across the full single-page experience (no default template look; avoid blue/purple primary palette).",
+      "acceptanceCriteria": [
+        "A distinct, consistent theme is applied (background, type scale, buttons, cards, and 3D overlay UI).",
+        "Theme does not rely on a blue/purple palette as the primary identity colors.",
+        "UI remains readable with sufficient contrast."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create global styles and Tailwind layer setup to define a warm Rose Day theme (rose/red/cream accents, readable neutrals) and apply consistent base typography/spacing. Ensure contrast remains sufficient and avoid blue/purple as primary identity colors."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend theme tokens (colors/radii/shadows as needed) to support a Valentine/Rose palette and consistent UI styling across overlays and panels (without introducing a blue/purple primary identity)."
+        },
+        {
+          "path": "frontend/src/components/layout/SiteFrame.tsx",
+          "operation": "modify",
+          "description": "Apply the global theme consistently in the layout wrapper (background treatment, spacing, panel styling) so all experience states share a cohesive look. Use shadcn-ui components as the structural primitives—verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add required generated static images under frontend/public/assets/generated and visibly use at least one in the UI without backend fetching.",
+      "acceptanceCriteria": [
+        "Generated images exist in frontend/public/assets/generated with the exact filenames specified in imageRequirements.required.",
+        "At least one generated image is visibly used in the UI (e.g., background, header, or decorative panel).",
+        "No backend endpoints are used to fetch these images."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/rose-day-bg.dim_1920x1080.png",
+          "operation": "create",
+          "description": "Add the generated static background image asset with the exact required filename at frontend/public/assets/generated/rose-day-bg.dim_1920x1080.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/rose-mark.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated static rose mark icon asset with the exact required filename at frontend/public/assets/generated/rose-mark.dim_512x512.png."
+        },
+        {
+          "path": "frontend/src/components/layout/SiteFrame.tsx",
+          "operation": "modify",
+          "description": "Wire the generated assets into the UI by applying frontend/public/assets/generated/rose-day-bg.dim_1920x1080.png as a visible page background treatment and using frontend/public/assets/generated/rose-mark.dim_512x512.png in a header/brand mark area. Use shadcn-ui components for layout composition—verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

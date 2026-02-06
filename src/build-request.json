@@ -1,0 +1,154 @@
+{
+  "kind": "build_request",
+  "title": "Interactive Rose Day (Valentine Week) first-person bouquet builder finale",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a single-page interactive Rose Day (Feb 7) experience that addresses the recipient in first-person using “you” language (do not refer to the recipient as “she”).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "create a website for my girlfriend, its valentine week now and today is rose day 7th of feb.",
+          "use vocablary which includes \"you\" instead of she"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All user-facing copy is in English and addresses the recipient as “you”.",
+        "No user-facing text refers to the recipient as “she/her”.",
+        "The experience works on both desktop and mobile browsers."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement an interactive flow that culminates in a ‘finale’ scene showing a digital bouquet of roses in a vase.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "the conclusion should be a digital bouquete of roses"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is a clear final state/scene that presents a bouquet of roses placed in a vase.",
+        "The user can reach the finale by progressing through the interactive flow (not a static page only)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build a 3D first-person perspective bouquet assembly scene using React Three Fiber (Three.js) where the user can add roses one-by-one and see them animate into the vase.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "animate the bouquete in a way that when flowers are added they are aligned and are put in the vase",
+          "make it in first person perspective"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The bouquet scene is rendered in 3D.",
+        "Camera behavior communicates first-person perspective (e.g., user looks from near eye-level toward the vase with look controls).",
+        "The user has an obvious interaction to add a flower (e.g., click/tap button or click the vase).",
+        "Each added rose animates from a spawn position into the vase (visible motion, not instantaneous placement)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Ensure bouquet construction logic aligns roses neatly: newly added roses should be positioned/rotated to form a visually coherent bouquet arrangement inside the vase (no random scattering outside the vase).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "when flowers are added they are aligned and are put in the vase"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Roses end their animation within the vase opening area (not clipping far outside).",
+        "Roses are arranged with consistent spacing and a believable bouquet silhouette (e.g., ring/spiral layering) as more are added.",
+        "Adding many roses (e.g., 20+) still results in an aligned arrangement without severe overlap artifacts."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add a simple narrative/interactivity layer before and during bouquet building (e.g., short Rose Day prompts, a ‘start’ moment, and progression text) to make the website feel interactive rather than a single static 3D view.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "make an interactive website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is an entry state (landing) and at least one intermediate interaction state before the finale bouquet completion moment.",
+        "Progression is clearly communicated (e.g., step indicator, ‘keep adding roses’, or a completion trigger).",
+        "All narrative text uses “you” phrasing."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add a coherent visual theme for the entire site (colors, typography, spacing, UI styling) appropriate for Rose Day/Valentine Week, and apply it consistently across screens and UI components (avoid default template look).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "create a website for my girlfriend, its valentine week now"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A distinct, consistent theme is applied (background, type scale, buttons, cards, and 3D overlay UI).",
+        "Theme does not rely on a blue/purple palette as the primary identity colors.",
+        "UI remains readable with sufficient contrast."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Create required custom static images and use them in the UI (served from frontend/public/assets/generated, not through the backend).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "make an interactive website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images exist in frontend/public/assets/generated with the exact filenames specified in imageRequirements.required.",
+        "At least one generated image is visibly used in the UI (e.g., background, header, or decorative panel).",
+        "No backend endpoints are used to fetch these images."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (compose these components instead).",
+    "Do not edit frontend/src/hooks/useInternetIdentity.ts or frontend/src/hooks/useActor.ts (use them only if needed).",
+    "Backend must remain a single Motoko actor; only add backend functionality if required by the requested UX."
+  ],
+  "nonGoals": [
+    "Internet Identity authentication.",
+    "User accounts, profiles, or persistence across devices.",
+    "Payments, subscriptions, or e-commerce.",
+    "External API integrations (social media, maps, messaging, LLMs).",
+    "Real-time multiplayer or chat."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Romantic Rose Day background illustration with subtle paper texture and scattered rose petals (rose-day-bg.dim_1920x1080.png)",
+      "Minimal elegant rose icon mark, flat vector style, transparent background (rose-mark.dim_512x512.png)"
+    ],
+    "edits": []
+  }
+}

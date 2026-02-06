@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Interactive Valentine’s/Rose Day website that culminates in an animated digital bouquet of roses assembled into a vase, written in first-person addressing the girlfriend as “you”.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Romantic Rose Day background illustration with subtle paper texture and scattered rose petals (rose-day-bg.dim_1920x1080.png)\n- Minimal elegant rose icon mark, flat vector style, transparent background (rose-mark.dim_512x512.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-interactive-rose-day-feb-7-experience-that-addresses-the-recipient-in-first-person-using-you-language-do-not-refer-to-the-recipient-as-she",
+      "title": "Create a single-page interactive Rose Day (Feb 7) experience that addresses the recipient in first-person using “you” language (do not refer to the recipient as “she”).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-interactive-flow-that-culminates-in-a-finale-scene-showing-a-digital-bouquet-of-roses-in-a-vase",
+      "title": "Implement an interactive flow that culminates in a ‘finale’ scene showing a digital bouquet of roses in a vase.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-3d-first-person-perspective-bouquet-assembly-scene-using-react-three-fiber-three-js-where-the-user-can-add-roses-one-by-one-and-see-them-animate-into-the-vase",
+      "title": "Build a 3D first-person perspective bouquet assembly scene using React Three Fiber (Three.js) where the user can add roses one-by-one and see them animate into the vase.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-bouquet-construction-logic-aligns-roses-neatly-newly-added-roses-should-be-positioned-rotated-to-form-a-visually-coherent-bouquet-arrangement-inside-the-vase-no-random-scattering-outside-the-vase",
+      "title": "Ensure bouquet construction logic aligns roses neatly: newly added roses should be positioned/rotated to form a visually coherent bouquet arrangement inside the vase (no random scattering outside the vase).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-simple-narrative-interactivity-layer-before-and-during-bouquet-building-e-g-short-rose-day-prompts-a-start-moment-and-progression-text-to-make-the-website-feel-interactive-rather-than-a-single-static-3d-view",
+      "title": "Add a simple narrative/interactivity layer before and during bouquet building (e.g., short Rose Day prompts, a ‘start’ moment, and progression text) to make the website feel interactive rather than a single static 3D view.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-coherent-visual-theme-for-the-entire-site-colors-typography-spacing-ui-styling-appropriate-for-rose-day-valentine-week-and-apply-it-consistently-across-screens-and-ui-components-avoid-default-template-look",
+      "title": "Add a coherent visual theme for the entire site (colors, typography, spacing, UI styling) appropriate for Rose Day/Valentine Week, and apply it consistently across screens and UI components (avoid default template look).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-required-custom-static-images-and-use-them-in-the-ui-served-from-frontend-public-assets-generated-not-through-the-backend",
+      "title": "Create required custom static images and use them in the UI (served from frontend/public/assets/generated, not through the backend).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create an interactive Valentine’s/Rose Day website experience for the user’s girlfriend.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "End experience with a digital bouquet of roses as the conclusion/finale.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Animate bouquet assembly: when flowers are added they align properly and are placed into a vase (first-person perspective).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Use first-person perspective language and address the girlfriend as “you” (avoid referring to her as “she”).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Interactive Rose Day (Valentine Week) first-person bouquet builder finale",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
